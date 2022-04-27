@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "eval_selection_9"
+version = "0.1.0"
+description = "module 9 for ML-intro RSschool"
+authors = ["A.Protasevich <a.protasevich93@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
