@@ -22,4 +22,12 @@ def create_data_folders():
     if path.exists(processed_path) and path.exists(raw_path):
         return True
     
-create_data_folders()
+
+def create_models_folder():
+    """
+    Create folder to store trained models
+    """
+    data_path = path.join('..', getcwd(), 'models')
+    if path.exists(data_path)==False: # see if we have our models dir if not create
+        mkdir(data_path)
+    return True
