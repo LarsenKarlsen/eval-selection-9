@@ -28,15 +28,12 @@ def make_split(data_path, random_seed:int = 42, val_partition:int = 0.2, save_sp
     X = df_raw.drop(['Cover_Type'], axis=1)
     y = df_raw['Cover_Type']    
 
-    X_train, X_test_val, y_train, y_test_val = train_test_split(X, y, test_size=0.2, stratify=y)
-    X_test, X_val, y_test, y_val = train_test_split(X_test_val, y_test_val, stratify=y_test_val, test_size=0.5)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y)
 
     return {
         'X_train': X_train,
-        'X_val':X_val,
         'X_test':X_test,
         'y_train':y_train,
-        'y_val':y_val,
         'y_test':y_test,
     }
 
