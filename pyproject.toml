@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "eval_selection_9"
+name = "forest_ml"
 version = "0.1.0"
 description = "module 9 for ML-intro RSschool"
 authors = ["A.Protasevich <a.protasevich93@gmail.com>"]

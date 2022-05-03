@@ -16,10 +16,8 @@ def make_split(data_path, random_seed:int = 42, val_partition:int = 0.2, save_sp
     return dict
     {
         'X_train': X_train,
-        'X_val':X_val,
         'X_test':X_test,
         'y_train':y_train,
-        'y_val':y_val,
         'y_test':y_test,
     }
     """
