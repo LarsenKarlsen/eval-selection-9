@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import joblib
+import mlflow
+import mlflow.sklearn
 from .lr_model import create_logistic_reg_pipeline
 from sklearn.model_selection import KFold, cross_validate
 from ..data_prep.train_val import make_split
@@ -16,7 +18,7 @@ def load_model(path):
     return joblib.load(path)
     
 
-def train (
+def train_lr (
     data_path:str,
     save_model_path:str,
     
