@@ -23,57 +23,57 @@ def load_model(path):
     return joblib.load(path)
     
 
-@click.command()
-@click.option(
-    "-d",
-    "--data-path",
-    default="data/heart.csv",
-    type=click.Path(exists=True, dir_okay=False, path_type=click.Path),
-    show_default=True,
-)
-@click.option(
-    "--model-name-prefix",
-    default="LR_model",
-    type=str,
-    show_default=True,
-)
-@click.option(
-    "-s",
-    "--save-model-path",
-    default="models/",
-    type=click.Path(dir_okay=False, writable=True, path_type=click.Path),
-    show_default=True,
-)
-@click.option(
-    "--use-scaller",
-    default=True,
-    type=bool,
-    show_default=True,
-)
-@click.option(
-    "--max-iter",
-    default=100,
-    type=int,
-    show_default=True,
-)
-@click.option(
-    "--C",
-    default=1.0,
-    type=float,
-    show_default=True,
-)
-@click.option(
-    "--penalty",
-    default='l2',
-    type=str,
-    show_default=True,
-)
-@click.option(
-    "--solver",
-    default='lbfgs',
-    type=str,
-    show_default=True,
-)
+# @click.command()
+# @click.option(
+#     "-d",
+#     "--data-path",
+#     default="data/heart.csv",
+#     type=click.Path(exists=True, dir_okay=False, path_type=click.Path),
+#     show_default=True,
+# )
+# @click.option(
+#     "--model-name-prefix",
+#     default="LR_model",
+#     type=str,
+#     show_default=True,
+# )
+# @click.option(
+#     "-s",
+#     "--save-model-path",
+#     default="models/",
+#     type=click.Path(dir_okay=False, writable=True, path_type=click.Path),
+#     show_default=True,
+# )
+# @click.option(
+#     "--use-scaller",
+#     default=True,
+#     type=bool,
+#     show_default=True,
+# )
+# @click.option(
+#     "--max-iter",
+#     default=100,
+#     type=int,
+#     show_default=True,
+# )
+# @click.option(
+#     "--C",
+#     default=1.0,
+#     type=float,
+#     show_default=True,
+# )
+# @click.option(
+#     "--penalty",
+#     default='l2',
+#     type=str,
+#     show_default=True,
+# )
+# @click.option(
+#     "--solver",
+#     default='lbfgs',
+#     type=str,
+#     show_default=True,
+# )
 def train_lr (
     data_path:str,
     name_prefix:str,
@@ -87,6 +87,7 @@ def train_lr (
     
 )->None:
     with mlflow.start_run():
+        print(locals())
         data = make_split(data_path=data_path)
         # metrics
         metrics = ['f1_micro', 'f1_macro', 'f1_weighted', 'roc_auc_ovr', 'roc_auc_ovo','neg_log_loss']

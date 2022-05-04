@@ -20,6 +20,9 @@ mlflow = "^1.25.1"
 
 [tool.poetry.dev-dependencies]
 
+[tool.poetry.scripts]
+cli = 'forest_ml.cli:cli'
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
