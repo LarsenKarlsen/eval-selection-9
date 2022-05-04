@@ -11,6 +11,9 @@ def save_model(model, path:str = None, name_prefix:str=None):
         if os.path.exists(path) == False:
             os.mkdir(path)
         joblib.dump(model, os.path.join(path, f"{name_prefix}.pkl"))
+
+def load_model(path):
+    return joblib.load(path)
     
 
 def train (
