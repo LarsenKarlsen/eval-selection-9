@@ -133,3 +133,4 @@ data/
 reports/
 notebooks/
 models/
+mlruns/
