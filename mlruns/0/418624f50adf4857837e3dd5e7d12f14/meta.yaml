@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/andreyprotasevich/python/eval-selection-9/notebooks/mlruns/0/418624f50adf4857837e3dd5e7d12f14/artifacts
+end_time: 1651653328859
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+name: ''
+run_id: 418624f50adf4857837e3dd5e7d12f14
+run_uuid: 418624f50adf4857837e3dd5e7d12f14
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1651653324164
+status: 4
+tags: []
+user_id: andreyprotasevich
