@@ -1,9 +1,9 @@
-from sys import path
 import pandas as pd
 import os
 import joblib
 import mlflow
 import mlflow.sklearn
+import click
 
 from sklearn.metrics import log_loss, f1_score
 
@@ -23,6 +23,57 @@ def load_model(path):
     return joblib.load(path)
     
 
+@click.command()
+@click.option(
+    "-d",
+    "--data-path",
+    default="data/heart.csv",
+    type=click.Path(exists=True, dir_okay=False, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    "--model-name-prefix",
+    default="LR_model",
+    type=str,
+    show_default=True,
+)
+@click.option(
+    "-s",
+    "--save-model-path",
+    default="models/",
+    type=click.Path(dir_okay=False, writable=True, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    "--use-scaller",
+    default=True,
+    type=bool,
+    show_default=True,
+)
+@click.option(
+    "--max-iter",
+    default=100,
+    type=int,
+    show_default=True,
+)
+@click.option(
+    "--C",
+    default=1.0,
+    type=float,
+    show_default=True,
+)
+@click.option(
+    "--penalty",
+    default='l2',
+    type=str,
+    show_default=True,
+)
+@click.option(
+    "--solver",
+    default='lbfgs',
+    type=str,
+    show_default=True,
+)
 def train_lr (
     data_path:str,
     name_prefix:str,
