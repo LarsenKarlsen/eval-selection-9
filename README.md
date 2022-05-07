@@ -18,12 +18,26 @@ poetry run cli
 This command runs command line interface
 
 CLI commands:
---help  
---init-folders  
+--help
+```python
+init-folders
+```
 Creates necessary folders  
---make-report  
+```python
+make-report
+```  
 Creates pandas profilling report
---train-knn-model  
+```python
+train-knn-model
+```
 Train knn model
---train-lr-model  
+```python
+train-lr-model
+```
 Train lr model
+
+To see help messege about all available flags to each command use flag --help next to command.  
+For example:
+```python
+poetry run cli train-knn-model --help
+```
