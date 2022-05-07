@@ -15,11 +15,14 @@ def create_data_folders():
         mkdir(data_path)
         mkdir(processed_path)
         mkdir(raw_path)
+        click.echo(f'[+] Data dir with apropriate catalogs created')
     if path.exists(processed_path)==False: # see if data dir have processed dir if not create it
         mkdir(processed_path)
+        click.echo(f'[+] Add processed dir to data')
     if path.exists(raw_path)==False: # see if data dir have processed dir if not create it
         mkdir(raw_path)
-    click.echo(f'[+] Data dir with apropriate catalogs created')
+        click.echo(f'[+] Add raw dir to data')
+    
     
     if path.exists(processed_path) and path.exists(raw_path):
         click.echo(f'[+] Data dir with apropriate catalog exists')

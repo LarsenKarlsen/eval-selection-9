@@ -10,7 +10,7 @@ def cli():
     pass
 
 
-cli.command()
+@cli.command()
 def init_folders():
     click.echo(f'[+] Creating data dir')
     create_folders.create_data_folders()
