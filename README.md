@@ -60,3 +60,7 @@ For example:
 ```python
 poetry run cli train-knn-model --help
 ```
+For expirement tracking using mlflow. To start type in console
+```python
+mlflow ui
+```
