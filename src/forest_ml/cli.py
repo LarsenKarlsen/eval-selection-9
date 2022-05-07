@@ -23,7 +23,7 @@ def cli():
 @click.option(
     "-s",
     "--save-model-path",
-    default="models/",
+    default="models",
     type=str, #click.Path(dir_okay=True, path_type=click.Path),
     show_default=True,
 )
@@ -32,6 +32,12 @@ def cli():
     default=True,
     type=bool,
     show_default=True,
+)
+@click.option(
+    '--use-pca',
+    default=0,
+    type=int,
+    show_default = True
 )
 @click.option(
     "--max-iter",
@@ -57,12 +63,13 @@ def cli():
     type=str,
     show_default=True,
 )
-def train_lr_model(data_path, model_name_prefix, save_model_path, use_scaller, max_iter, c, penalty, solver):
+def train_lr_model(data_path, model_name_prefix, save_model_path, use_scaller, use_pca, max_iter, c, penalty, solver):
     train_lr(
         data_path=data_path,
         name_prefix=model_name_prefix,
         save_model_path = save_model_path,
         use_scaller = use_scaller,
+        use_PCA = use_pca,
         max_iter = max_iter,
         C = c,
         penalty = penalty,

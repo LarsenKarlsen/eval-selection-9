@@ -13,72 +13,23 @@ from ..data_prep.train_val import make_split
 
 def save_model(model, path:str = None, name_prefix:str=None):
     if path==None:
-        path = os.path.abspath('../models')
+        path = os.path.abspath('models')
         if os.path.exists(path) == False:
             os.mkdir(path)
-        joblib.dump(model, os.path.join(path, f"{name_prefix}.pkl"))
+    joblib.dump(model, os.path.join(path, f"{name_prefix}.pkl"))
+
     return os.path.join(path, f"{name_prefix}.pkl")
 
 def load_model(path):
     return joblib.load(path)
     
 
-# @click.command()
-# @click.option(
-#     "-d",
-#     "--data-path",
-#     default="data/heart.csv",
-#     type=click.Path(exists=True, dir_okay=False, path_type=click.Path),
-#     show_default=True,
-# )
-# @click.option(
-#     "--model-name-prefix",
-#     default="LR_model",
-#     type=str,
-#     show_default=True,
-# )
-# @click.option(
-#     "-s",
-#     "--save-model-path",
-#     default="models/",
-#     type=click.Path(dir_okay=False, writable=True, path_type=click.Path),
-#     show_default=True,
-# )
-# @click.option(
-#     "--use-scaller",
-#     default=True,
-#     type=bool,
-#     show_default=True,
-# )
-# @click.option(
-#     "--max-iter",
-#     default=100,
-#     type=int,
-#     show_default=True,
-# )
-# @click.option(
-#     "--C",
-#     default=1.0,
-#     type=float,
-#     show_default=True,
-# )
-# @click.option(
-#     "--penalty",
-#     default='l2',
-#     type=str,
-#     show_default=True,
-# )
-# @click.option(
-#     "--solver",
-#     default='lbfgs',
-#     type=str,
-#     show_default=True,
-# )
 def train_lr (
     data_path:str,
     name_prefix:str,
     save_model_path:str=None,
     use_scaller: bool = True,
+    use_PCA: int = 0,
     max_iter: int = 100,
     C: float = 1.0,
     penalty: str = 'l2',
@@ -94,7 +45,14 @@ def train_lr (
         # cv strategy
         cv = KFold(n_splits=5, random_state=42, shuffle=True)
         # model
-        model = create_logistic_reg_pipeline(use_scaller=use_scaller)
+        model = create_logistic_reg_pipeline(
+            use_scaller=use_scaller,
+            use_PCA=use_PCA,
+            max_iter=max_iter,
+            C=C,
+            penalty=penalty,
+            solver=solver
+        )
         # cross val
         cv_results = cross_validate(
             model, data['X_train'], data['y_train'], cv=cv, scoring=metrics,
@@ -109,7 +67,8 @@ def train_lr (
         
         path_saved_model = save_model(model, name_prefix=name_prefix, path=save_model_path)
         
-        print(f'Model saved to {path_saved_model}')
+        click.echo(f'Model saved to:')
+        click.echo(os.path.abspath(path_saved_model))
         
         # return cv_results
         # add model params to mlflow
