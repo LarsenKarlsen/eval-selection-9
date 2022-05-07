@@ -33,7 +33,7 @@ poetry install
     |___ __init__.py # make package
     |___ cli.py # command line interface
 ```
-You can download dataset from [Forest train dataset](https://www.kaggle.com/competitions/forest-cover-type-prediction)
+You can download dataset from [here](https://www.kaggle.com/competitions/forest-cover-type-prediction)
 
 
 
