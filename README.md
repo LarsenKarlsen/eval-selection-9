@@ -16,7 +16,7 @@ poetry install
 .
 |___ data
 |   |____ processed # folder to store data after manipulations
-|   |____ raw  # raw data folder ! never change it ! to obtain data go to [Forest train dataset](https://www.kaggle.com/competitions/forest-cover-type-prediction)
+|   |____ raw  # raw data folder ! never change it ! 
 |___ models # store your models here
 |___ notebooks # place when you can keep your jupyter notebooks
 |___ reports # store reports and visualizations of data there
@@ -33,7 +33,7 @@ poetry install
     |___ __init__.py # make package
     |___ cli.py # command line interface
 ```
-
+You can download dataset from [Forest train dataset](https://www.kaggle.com/competitions/forest-cover-type-prediction)
 
 
 
