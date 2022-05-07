@@ -3,6 +3,7 @@ import click
 from forest_ml.model.train import train_lr
 from forest_ml.model.train import train_knn
 from forest_ml.data_prep import create_folders
+from forest_ml.visualization.profiling import raw_train_profiling_report
 
 
 @click.group()
@@ -19,6 +20,18 @@ def init_folders():
     click.echo(f'[+] Creating notebook folder')
     create_folders.create_notebook_folder()
 
+@cli.command()
+@click.option(
+    '--path',
+    default="data/raw/train.csv",
+    type= str,
+    show_default=True,
+)
+def make_report(path):
+    click.echo(f'[+] Creating pandas profilling report from data at {path}')
+    report_path = raw_train_profiling_report(dataset_path=path)
+    click.echo(f'[+] Report created at {report_path}')
+    
 
 @cli.command()
 @click.option(

@@ -29,3 +29,4 @@ def raw_train_profiling_report(dataset_path:str='data//raw//train.csv')->Profile
     df = pd.read_csv(raw_data_path, index_col='Id')
     profiling = ProfileReport(df, title='Raw Forest train data profiling report', explorative=True)
     profiling.to_file(report_path)
+    return report_path
