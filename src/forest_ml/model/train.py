@@ -90,7 +90,6 @@ def train_lr (
         mlflow.log_metric('test_f1_micro', f1_score_test)
 
 
-
         
 
 
