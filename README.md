@@ -11,10 +11,30 @@ Instructions
 ```python
 poetry install
 ```
- - Run command line interface
-```python
-poetry run cli
+ - Project have following structure
 ```
+.
+|___ data
+|   |____ processed # folder to store data after manipulations
+|   |____ raw  # raw data folder ! never change it ! to obtain data go to [Forest train dataset](https://www.kaggle.com/competitions/forest-cover-type-prediction)
+|___ models # store your models here
+|___ notebooks # place when you can keep your jupyter notebooks
+|___ reports # store reports and visualizations of data there
+|___ src/forest_ml # source code
+    |___ data_prep # contains scripts to process data
+        |___ create_folders.py # creates necessary folders
+        |___ train_val.py # splitting strateges
+    |___ model # 
+        |___ knn_models.py # Pipeline to create KNN models
+        |___ lr_models.py # Pipeline to create Linear Regression models
+        |___ train.py # Training algorithm
+    |___ visualization # creating different reports
+        |___ profiling.py # pandas profiling report
+    |___ __init__.py # make package
+    |___ cli.py # command line interface
+```
+
+
 
 
 ## CLI commands:
