@@ -72,8 +72,9 @@ def train_lr (
         
         # return cv_results
         # add model params to mlflow
-        mlflow.log_param('model_name_prefix', name_prefix),
+        mlflow.log_param('model_name_prefix', name_prefix)
         mlflow.log_param('use_scaller', use_scaller)
+        mlflow.log_param('use_pca_with_n_components', use_PCA)
         mlflow.log_param('max_iter', max_iter)
         mlflow.log_param('C', C)
         mlflow.log_param('penalty', penalty)
