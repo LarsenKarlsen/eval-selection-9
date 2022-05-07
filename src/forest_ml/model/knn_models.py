@@ -39,4 +39,4 @@ def create_KNN_pipeline(
             metric=metric
         ))
     )
-    return Pipeline
+    return Pipeline(steps=pipeline_steps)
