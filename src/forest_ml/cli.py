@@ -2,11 +2,23 @@ from email.policy import default
 import click
 from forest_ml.model.train import train_lr
 from forest_ml.model.train import train_knn
+from forest_ml.data_prep import create_folders
 
 
 @click.group()
 def cli():
     pass
+
+
+cli.command()
+def init_folders():
+    click.echo(f'[+] Creating data dir')
+    create_folders.create_data_folders()
+    click.echo(f'[+] Creating models folder')
+    create_folders.create_models_folder()
+    click.echo(f'[+] Creating notebook folder')
+    create_folders.create_notebook_folder()
+
 
 @cli.command()
 @click.option(
