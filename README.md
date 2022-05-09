@@ -89,3 +89,7 @@ For expirement tracking using mlflow. To start type in console
 ```python
 mlflow ui
 ```
+
+## MLFLOW Screenshots
+
+   ![MLFlow experiments example](https://user-images.githubusercontent.com/40484210/147333877-8acc8c51-00f6-4278-bf76-05abf51301ab.png)
