@@ -38,6 +38,11 @@ You can download dataset from [here](https://www.kaggle.com/competitions/forest-
 
 
 ## CLI commands:
+* main command is
+```
+poetry run cli
+```
+after u can add :
 * Creates necessary folders  
 ```python
 init-folders
