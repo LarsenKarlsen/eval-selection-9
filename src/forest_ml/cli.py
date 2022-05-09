@@ -1,7 +1,6 @@
 from email.policy import default
 import click
-from forest_ml.model.train import train_lr
-from forest_ml.model.train import train_knn
+from forest_ml.model.train import save_model, train_lr, train_knn, train_lr_autotuned
 from forest_ml.data_prep import create_folders
 from forest_ml.visualization.profiling import raw_train_profiling_report
 
@@ -188,6 +187,47 @@ def train_knn_model(data_path, model_name_prefix, save_model_path, use_scaller,
         p=p,
         metric=metric
     )
+
+@cli.command()
+@click.option(
+    "-d",
+    "--data-path",
+    default="data/raw/train.csv",
+    type= str,#click.Path(exists=True, dir_okay=False, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    "--model-name",
+    default="LR_model_auto",
+    type=str,
+    show_default=True,
+)
+@click.option(
+    "-s",
+    "--save-path",
+    default="models",
+    type=str, #click.Path(dir_okay=True, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    '--use-scaller',
+    default=True,
+    type=bool,
+    show_default=True,
+)
+@click.option(
+    '--use-pca',
+    default=False,
+    type=bool,
+    show_default=True
+)
+def train_lr_auto(data_path, model_name, save_path, use_scaller, use_pca):
+    click.echo(f'[+] Start tune model')
+    train_lr_autotuned(
+        data_path=data_path, name_prefix=model_name,
+        save_model_path=save_path, use_PCA=use_pca, use_scaller=use_scaller
+        )
+    click.echo(f'[+] Success !')
 
 if __name__ == '__main__':
     cli()

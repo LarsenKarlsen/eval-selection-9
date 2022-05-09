@@ -180,15 +180,15 @@ def train_lr_autotuned (
         metrics = METRICS
         # grid
         grid = {
-            'clf__solver':['liblinear','saga'],
-            'clf__penalty':['l1', 'l2'],
-            'clf__C':[0.1, 100, 10, 0.1, 0.01]
+            # 'clf__solver':['liblinear','saga'],
+            # 'clf__penalty':['l1', 'l2'],
+            'clf__C':[0.1, 100,]# 10, 0.1, 0.01]
         }
         # cv strategy
         cv_inner = KFold(n_splits=10, random_state=42, shuffle=True)
         cv_outter = KFold(n_splits=5, random_state=42, shuffle=True)
         # model
-        model = create_logistic_reg_pipeline(use_scaller=use_scaller, use_PCA=use_PCA)
+        model = create_logistic_reg_pipeline(use_scaller=use_scaller, use_PCA=use_PCA, max_iter=10000)
         # search
         search = GridSearchCV(model, grid, scoring=METRICS[-1], n_jobs=1, cv=cv_inner, refit=True, verbose=0)
         # cross val
@@ -204,14 +204,14 @@ def train_lr_autotuned (
         pred = model.predict(data['X_test'])
         log_loss_test = log_loss(data['y_test'], model.predict_proba(data['X_test']), labels=data['y_test'])
         f1_score_test = f1_score(data['y_test'], pred, average='micro')
-        print(f'log_loss:{log_loss_test}\nf1:{f1_score_test}')
         
         path_saved_model = save_model(model, name_prefix=name_prefix, path=save_model_path)
         
         click.echo(f'Model saved to:')
         click.echo(os.path.abspath(path_saved_model))
         
-        model_params = model.get_params()
+        model_params = model.best_estimator_.get_params()
+        # return cv_results
         # add model params to mlflow
         mlflow.log_param('model_name_prefix', name_prefix)
         mlflow.log_param('use_scaller', use_scaller)

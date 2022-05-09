@@ -54,6 +54,19 @@ train-knn-model
 ```python
 train-lr-model
 ```
+* You also can use autotune for Linear model, but it may take time.
+```python
+        grid = {
+            'clf__solver':['liblinear','saga'],
+            'clf__penalty':['l1', 'l2'],
+            'clf__C':[0.1, 100, 10, 0.1, 0.01]
+        }
+
+```
+Command
+```
+train-lr-auto
+```
 
 To see help messege about all available flags to each command use flag --help next to command.  
 For example:
