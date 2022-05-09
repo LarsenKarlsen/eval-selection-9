@@ -132,8 +132,8 @@ def train_lr_model(data_path, model_name_prefix, save_model_path, use_scaller, u
 )
 @click.option(
     '--use-pca',
-    default=False,
-    type=bool,
+    default=0,
+    type=int,
     show_default=True
 )
 @click.option(
