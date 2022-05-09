@@ -1,6 +1,6 @@
 from email.policy import default
 import click
-from forest_ml.model.train import save_model, train_lr, train_knn, train_lr_autotuned
+from forest_ml.model.train import train_lr, train_knn, train_lr_autotuned, train_knn_autotune
 from forest_ml.data_prep import create_folders
 from forest_ml.visualization.profiling import raw_train_profiling_report
 
@@ -228,6 +228,74 @@ def train_lr_auto(data_path, model_name, save_path, use_scaller, use_pca):
         save_model_path=save_path, use_PCA=use_pca, use_scaller=use_scaller
         )
     click.echo(f'[+] Success !')
+
+@cli.command()
+@click.option(
+    "-d",
+    "--data-path",
+    default="data/raw/train.csv",
+    type= str,#click.Path(exists=True, dir_okay=False, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    "--name-prefix",
+    default="KNN_auto",
+    type=str,
+    show_default=True,
+)
+@click.option(
+    "-s",
+    "--save-model-path",
+    default="models",
+    type=str, #click.Path(dir_okay=True, path_type=click.Path),
+    show_default=True,
+)
+@click.option(
+    '--use-scaller',
+    default=True,
+    type=bool,
+    show_default=True,
+)
+@click.option(
+    '--use-pca',
+    default=False,
+    type=bool,
+    show_default=True
+)
+@click.option(
+    '--algorithm',
+    default='auto',
+    type=str,
+    show_default=True
+)
+@click.option(
+    '--leaf-size',
+    default=30,
+    type=int,
+    show_default=True
+)
+@click.option(
+    '--p',
+    default=2,
+    type=int,
+    show_default=True
+)
+def train_knn_auto(
+    data_path, name_prefix, save_model_path, use_scaller, use_pca, algorithm, leaf_size, p
+):
+    click.echo(f'[+] Start tune model')
+    train_knn_autotune(
+        data_path=data_path,
+        name_prefix=name_prefix,
+        save_model_path=save_model_path,
+        use_scaller=use_scaller,
+        use_PCA=use_pca,
+        algorithm=algorithm,
+        leaf_size=leaf_size,
+        p=p
+    )
+    click.echo(f'[+] Success !')
+
 
 if __name__ == '__main__':
     cli()
