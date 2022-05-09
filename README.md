@@ -67,6 +67,18 @@ Command
 ```
 train-lr-auto
 ```
+* and KNN model
+```python
+        grid = {
+            'clf__weights':['uniform', 'distance'],
+            'clf__metric':['euclidean', 'manhattan', 'minkowski'],
+            'clf__n_neighbors':range(1, 21, 2)
+        }
+```
+Command
+```
+train-knn-auto
+```
 
 To see help messege about all available flags to each command use flag --help next to command.  
 For example:
