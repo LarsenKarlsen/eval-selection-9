@@ -91,3 +91,10 @@ mlflow ui
 ```
 ### PS INCLUDE MLRUNS dir so u can see my runs
 ## MLFLOW Screenshots
+<img width="1440" alt="Снимок экрана 2022-05-09 в 19 27 41" src="https://user-images.githubusercontent.com/48959644/167455765-0775e8db-9518-46c9-82ba-76c6dfec15cb.png">
+<img width="1440" alt="Снимок экрана 2022-05-09 в 19 27 26" src="https://user-images.githubusercontent.com/48959644/167455748-665aa6f6-816d-48df-8854-d5a32c65a73f.png"><img width="1440" alt="Снимок экрана 2022-05-09 в 19 27 54" src="https://user-images.githubusercontent.com/48959644/167455777-e918452f-381f-40fa-a227-e5d83910a0ca.png">
+<img width="1440" alt="Снимок экрана 2022-05-09 в 19 28 12" src="https://user-images.githubusercontent.com/48959644/167455788-4473228a-52d3-43fe-9b67-a035ee78adff.png">
+<img width="1440" alt="Снимок экрана 2022-05-09 в 19 28 22" src="https://user-images.githubusercontent.com/48959644/167455793-dd154ce4-c0e7-4d7d-83f0-85bd27596da9.png">
+<img width="1440" alt="Снимок экрана 2022-05-09 в 19 28 37" src="https://user-images.githubusercontent.com/48959644/167455797-67f1fe19-4850-4820-89ac-8f70af97ca32.png">
+
+
